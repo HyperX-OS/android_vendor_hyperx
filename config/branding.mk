@@ -1,9 +1,9 @@
 # Versioning System
-HYPERX_BASE_VERSION := 5.6.1
-EVO_CODENAME := Passion
+HYPERX_BASE_VERSION := 1
+HYPERX_CODENAME := faster
 
 # Set all versions
-EVO_BUILD_TYPE ?= UNOFFICIAL
+HYPERX_BUILD_TYPE ?= UNOFFICIAL
 
 HYPERX_DATE_YEAR := $(shell date -u +%Y)
 HYPERX_DATE_MONTH := $(shell date -u +%m)
