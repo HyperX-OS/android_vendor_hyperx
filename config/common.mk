@@ -18,11 +18,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Inherit vendor submodules
-$(call inherit-product, vendor/evolution/config/apex.mk)
-$(call inherit-product, vendor/evolution/config/apps.mk)
-$(call inherit-product, vendor/evolution/config/bootanimation.mk)
-$(call inherit-product, vendor/evolution/config/common_telephony.mk)
-$(call inherit-product, vendor/evolution/config/themes.mk)
+$(call inherit-product, vendor/hyperx/config/apex.mk)
+$(call inherit-product, vendor/hyperx/config/apps.mk)
+$(call inherit-product, vendor/hyperx/config/bootanimation.mk)
+$(call inherit-product, vendor/hyperx/config/common_telephony.mk)
+$(call inherit-product, vendor/hyperx/config/themes.mk)
 
 # Inherit from GMS product config
 $(call inherit-product, vendor/gms/gms_full.mk)
@@ -56,33 +56,33 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/evolution/prebuilt/common/bin/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/install/bin/backuptool.sh \
-    vendor/evolution/prebuilt/common/bin/backuptool.functions:$(TARGET_COPY_OUT_SYSTEM)/install/bin/backuptool.functions \
-    vendor/evolution/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh
+    vendor/hyperx/prebuilt/common/bin/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/install/bin/backuptool.sh \
+    vendor/hyperx/prebuilt/common/bin/backuptool.functions:$(TARGET_COPY_OUT_SYSTEM)/install/bin/backuptool.functions \
+    vendor/hyperx/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
-    vendor/evolution/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/evolution/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/evolution/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/hyperx/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/hyperx/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/hyperx/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 endif
 
 # ROM-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/evolution-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/evolution-sysconfig.xml
+    vendor/hyperx/config/permissions/evolution-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/evolution-sysconfig.xml
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
-    vendor/evolution/config/permissions/privapp-permissions-evolution.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-evolution.xml
+    vendor/hyperx/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
+    vendor/hyperx/config/permissions/privapp-permissions-evolution.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-evolution.xml
 
 # Copy all custom init rc files
-$(foreach f,$(wildcard vendor/evolution/prebuilt/common/etc/init/*.rc),\
+$(foreach f,$(wildcard vendor/hyperx/prebuilt/common/etc/init/*.rc),\
     $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
+    vendor/hyperx/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -98,7 +98,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Power whitelist
 PRODUCT_COPY_FILES += \
-    vendor/evolution/config/permissions/custom-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/custom-power-whitelist.xml
+    vendor/hyperx/config/permissions/custom-power-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/custom-power-whitelist.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -126,8 +126,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.recorder.show_manufacturer_and_model=true
 
 # Overlays
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/evolution/overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/evolution/overlay/common
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/hyperx/overlay
+DEVICE_PACKAGE_OVERLAYS += vendor/hyperx/overlay/common
 
 # Dex preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
@@ -146,10 +146,10 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Branding
-include vendor/evolution/config/branding.mk
+include vendor/hyperx/config/branding.mk
 
 # OTA
-include vendor/evolution/config/ota.mk
+include vendor/hyperx/config/ota.mk
 
 # Pixel Style
 include vendor/pixelstyle/config.mk
