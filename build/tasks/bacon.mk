@@ -32,22 +32,17 @@ EVO_TARGET_PACKAGE := $(PRODUCT_OUT)/$(EVO_VERSION).zip
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(EVO_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(EVO_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(EVO_TARGET_PACKAGE).md5sum
-	$(hide) ./vendor/evolution/tools/generate_json_build_info.sh $(EVO_TARGET_PACKAGE)
+	$(hide) ./vendor/hyperx/tools/generate_json_build_info.sh $(EVO_TARGET_PACKAGE)
 	
 	@echo "${cya}Building ${bldcya}Evolution...! ${txtrst}";
 	@echo -e""
 	@echo -e ${CL_GRN}"==========================================================="${CL_GRN}
-	@echo -e ${CL_CYN}"    ______            __      __  _                _  __   "${CL_CYN}
-	@echo -e ${CL_CYN}"   / ____/   ______  / /_  __/ /_(_)___  ____     | |/ /   "${CL_CYN}
-	@echo -e ${CL_CYN}"  / __/ | | / / __ \/ / / / / __/ / __ \/ __ \    |   /    "${CL_CYN}
-	@echo -e ${CL_CYN}" / /___ | |/ / /_/ / / /_/ / /_/ / /_/ / / / /   /   |     "${CL_CYN}
-	@echo -e ${CL_CYN}"/_____/ |___/\____/_/\__,_/\__/_/\____/_/ /_/   /_/|_|     "${CL_CYN}
-	@echo -e ${CL_CYN}"                                                           "${CL_CYN}
+	@echo -e ${CL_CYN}"                         HYPER X OS                        "${CL_GRN}       
 	@echo -e ${CL_GRN}"==========================================================="${CL_GRN}
-	@echo -e ${CL_YLW}"Zip  :"${CL_YLW} $(EVO_VERSION).zip${CL_YLW}
-	@echo -e ${CL_YLW}"MD5  :"${CL_YLW}" `cat $(EVO_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"Size :"${CL_YLW}" `du -sh $(EVO_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"ID   :"${CL_YLW}" `sha256sum $(EVO_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
-	@echo -e ${CL_YLW}"Path :"${CL_YLW}" $(EVO_TARGET_PACKAGE)"${CL_YLW}
+	@echo -e ${CL_YLW}"Zip  :"${CL_YLW} $(HYPER_VERSION).zip${CL_YLW}
+	@echo -e ${CL_YLW}"MD5  :"${CL_YLW}" `cat $(HYPER_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_YLW}"Size :"${CL_YLW}" `du -sh $(HYPER_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_YLW}"ID   :"${CL_YLW}" `sha256sum $(HYPER_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
+	@echo -e ${CL_YLW}"Path :"${CL_YLW}" $(HYPER_TARGET_PACKAGE)"${CL_YLW}
 	@echo -e ${CL_GRN}"***********************************************************"${CL_GRN}
 
