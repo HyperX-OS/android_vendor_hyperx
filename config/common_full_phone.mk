@@ -15,4 +15,4 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     net.tethering.noprovisioning=true
 
 # Inherit full common Evolution X stuff
-$(call inherit-product, vendor/evolution/config/common_full.mk)
+$(call inherit-product, vendor/hyperx/config/common_full.mk)
