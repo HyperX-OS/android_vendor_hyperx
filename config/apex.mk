@@ -15,11 +15,11 @@
 #
 
 # Networkstack certificate
-PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/evolution/apex/NetworkStack
+PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/hyperx/apex/NetworkStack
 
 # Enable Google Play system updates support
 PRODUCT_SOONG_NAMESPACES += \
-    vendor/evolution/apex
+    vendor/hyperx/apex
 
 # ModuleMetadata
 PRODUCT_PACKAGES += \
