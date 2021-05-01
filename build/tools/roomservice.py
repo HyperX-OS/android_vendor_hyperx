@@ -46,9 +46,9 @@ default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/evolution_manifest.xml"
 custom_default_revision = "elle"
-custom_dependencies = "evolution.dependencies"
-org_manifest = "evo-devices"  # leave empty if org is provided in manifest
-org_display = "Evolution-X-Devices"  # needed for displaying
+custom_dependencies = "hyper.dependencies"
+org_manifest = "hyper-devices"  # leave empty if org is provided in manifest
+org_display = "hyperx-Devices"  # needed for displaying
 
 github_auth = None
 
