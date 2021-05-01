@@ -1,9 +1,9 @@
-ifeq ($(EVO_BUILD_TYPE), OFFICIAL)
+ifeq ($(HYPERX_BUILD_TYPE), OFFICIAL)
 
-EVO_OTA_VERSION_CODE := eleven
+HYPERX_OTA_VERSION_CODE := eleven
 
 PRODUCT_GENERIC_PROPERTIES += \
-    org.evolution.ota.version_code=$(EVO_OTA_VERSION_CODE) \
+    org.hyperx.ota.version_code=$(EVO_OTA_VERSION_CODE) \
     sys.ota.disable_uncrypt=1
 
 PRODUCT_PACKAGES += \
