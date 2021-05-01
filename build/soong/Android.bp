@@ -1,8 +1,8 @@
 // Evolution X soong configs
 
 bootstrap_go_package {
-    name: "soong-evolution-generator",
-    pkgPath: "evolution/soong/generator",
+    name: "soong-hyperx-generator",
+    pkgPath: "evolution/hyperx/generator",
     deps: [
         "blueprint",
         "blueprint-pathtools",
