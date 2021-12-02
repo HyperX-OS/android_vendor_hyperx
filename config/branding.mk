@@ -1,4 +1,4 @@
-CUSTOM_BUILD_TYPE ?= BETA
+CUSTOM_BUILD_TYPE ?= faster
 
 CUSTOM_DATE_YEAR := $(shell date -u +%Y)
 CUSTOM_DATE_MONTH := $(shell date -u +%m)

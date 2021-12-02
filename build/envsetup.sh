@@ -9,7 +9,7 @@ Additional functions:
 - pixelrebase:     Rebase a Gerrit change and push it again.
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
-- githubremote:    Add git remote for PixelExperience Github.
+- githubremote:    Add git remote for hyperx Github.
 - mka:             Builds using SCHED_BATCH on all processors.
 - mkap:            Builds the module(s) using mka and pushes them to the device.
 - cmka:            Cleans and builds using mka.
@@ -290,7 +290,7 @@ function githubremote()
 
     local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
 
-    git remote add github https://github.com/PixelExperience/$PROJECT
+    git remote add github https://github.com/HyperX-OS/$PROJECT
     echo "Remote 'github' created"
 }
 
@@ -321,7 +321,7 @@ function installboot()
     adb wait-for-device-recovery
     adb root
     adb wait-for-device-recovery
-    if (adb shell getprop org.pixelexperience.device | grep -q "$CUSTOM_BUILD");
+    if (adb shell getprop org.hyperx.device | grep -q "$CUSTOM_BUILD");
     then
         adb push $OUT/boot.img /cache/
         adb shell dd if=/cache/boot.img of=$PARTITION
@@ -331,7 +331,6 @@ function installboot()
         echo "The connected device does not appear to be $CUSTOM_BUILD, run away!"
     fi
 }
-
 function installrecovery()
 {
     if [ ! -e "$OUT/recovery/root/etc/recovery.fstab" ];
@@ -388,7 +387,7 @@ function __detect_shell() {
 
 function pixelgerrit() {
     if [ "$(basename $SHELL)" = "zsh" ]; then
-        # zsh does not define FUNCNAME, derive from funcstack
+       # zsh does not define FUNCNAME, derive from funcstack
         local FUNCNAME=$funcstack[1]
     fi
 
@@ -399,7 +398,7 @@ function pixelgerrit() {
     local user=`git config --get review.gerrit.pixelexperience.org.username`
     local review=`git config --get remote.pixel.review`
     local project=`git config --get remote.pixel.projectname`
-    local remote_branch=twelve
+    local remote_branch=faster
     local command=$1
     shift
     case $command in
