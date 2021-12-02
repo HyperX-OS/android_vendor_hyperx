@@ -1,7 +1,6 @@
 # Copyright (C) 2017 Unlegacy-Android
 # Copyright (C) 2017,2020 The LineageOS Project
-# Copyright (C) 2018 The PixelExperience Project
-# Copyright (C) 2020 The Evolution X Project
+# Copyright (C) 2018,2020 The PixelExperience Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,34 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Build with colors
-ifneq ($(BUILD_WITH_COLORS),0)
-	CL_RED="\033[31m"
-	CL_GRN="\033[1;32m"
-	CL_YLW="\033[1;33m"
-	CL_BLU="\033[34m"
-	CL_MAG="\033[35m"
-	CL_CYN="\033[1;36m"
-	CL_RST="\033[0m"
-endif
+CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CUSTOM_VERSION).zip
 
-EVO_TARGET_PACKAGE := $(PRODUCT_OUT)/$(EVO_VERSION).zip
+SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(EVO_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(EVO_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(EVO_TARGET_PACKAGE).md5sum
-	$(hide) ./vendor/hyperx/tools/generate_json_build_info.sh $(EVO_TARGET_PACKAGE)
-	
-	@echo "${cya}Building ${bldcya}Evolution...! ${txtrst}";
-	@echo -e""
-	@echo -e ${CL_GRN}"==========================================================="${CL_GRN}
-	@echo -e ${CL_CYN}"                         HYPER X OS                        "${CL_GRN}       
-	@echo -e ${CL_GRN}"==========================================================="${CL_GRN}
-	@echo -e ${CL_YLW}"Zip  :"${CL_YLW} $(HYPER_VERSION).zip${CL_YLW}
-	@echo -e ${CL_YLW}"MD5  :"${CL_YLW}" `cat $(HYPER_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"Size :"${CL_YLW}" `du -sh $(HYPER_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_YLW}"ID   :"${CL_YLW}" `sha256sum $(HYPER_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
-	@echo -e ${CL_YLW}"Path :"${CL_YLW}" $(HYPER_TARGET_PACKAGE)"${CL_YLW}
-	@echo -e ${CL_GRN}"***********************************************************"${CL_GRN}
-
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
+	$(hide) $(SHA256) $(CUSTOM_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(CUSTOM_TARGET_PACKAGE).sha256sum
+	@echo "Package Complete: $(CUSTOM_TARGET_PACKAGE)" >&2

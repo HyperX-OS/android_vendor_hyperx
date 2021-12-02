@@ -1,4 +1,5 @@
 # Telephony
+
 IS_PHONE := true
 
 # World APN list
@@ -14,5 +15,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     net.tethering.noprovisioning=true
 
-# Inherit full common Evolution X stuff
+# Inherit full common PixelExperience stuff
 $(call inherit-product, vendor/hyperx/config/common_full.mk)

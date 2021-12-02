@@ -14,13 +14,13 @@ except:
     urllib.parse = urlparse
     urllib.request = urllib2
 try:
-    url = "https://raw.githubusercontent.com/Evolution-X-Devices/official_devices/master/devices.json"
+    url = "https://raw.githubusercontent.com/HyperX-OS/official_devices/master/devices.json"
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
     for res in data:
         for version in res['supported_versions']:
-            if version['version_code'] == 'eleven':
-                print(res['codename'])
+            if version['version_code'] == 'twelve':
+                print (res['codename'])
                 break
 except:
-    print("")
+    print ("")

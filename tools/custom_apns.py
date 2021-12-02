@@ -18,11 +18,10 @@
 import sys
 from xml.dom.minidom import parseString
 
-
 def main(argv):
     reload(sys)
     sys.setdefaultencoding('utf8')
-    original_file = 'vendor/evolution/prebuilt/common/etc/apns-conf.xml'
+    original_file = 'vendor/hyperx/prebuilt/common/etc/apns-conf.xml'
 
     if len(argv) == 3:
         output_file_path = argv[1]
@@ -34,9 +33,8 @@ def main(argv):
     with open(custom_override_file, 'r') as f:
         for line in f:
             xmltree = parseString(line)
-            carrier = xmltree.getElementsByTagName('apn')[0].getAttribute(
-                'carrier')
-            custom_apn_names.append(carrier)
+            carrier = xmltree.getElementsByTagName('apn')[0].getAttribute('carrier')
+            custom_apn_names.append('"' + carrier + '"')
 
     with open(original_file, 'r') as input_file:
         with open(output_file_path, 'w') as output_file:
@@ -54,13 +52,11 @@ def main(argv):
                     if "</apns>" in line:
                         if custom_apn_names:
                             for apn in custom_apn_names:
-                                with open(custom_override_file,
-                                          'r') as custom_file:
+                                with open(custom_override_file, 'r') as custom_file:
                                     for override_line in custom_file:
                                         if apn in override_line:
                                             output_file.write(override_line)
                     output_file.write(line)
-
 
 if __name__ == '__main__':
     main(sys.argv)
